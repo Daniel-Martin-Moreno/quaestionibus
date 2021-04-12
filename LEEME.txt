@@ -1,0 +1,36 @@
+Desarrollado con openjdk 14.0.2
+
+Ejecutar desde la línea de comandos una vez generado el jar:
+En la carpeta principal del proyecto:
+java -jar target/quaestionibus-0.0.1-SNAPSHOT.jar
+
+NOTA: en lo pasado ya va incluido el target/preguntas-0.0.1-SNAPSHOT.jar
+
+Ejemplos de llamadas para recuperar todas las preguntas relacionadas con el tema de una convocatoria. Desde el API:
+http://localhost:9002/convocatorias/18/temas/75/parte/ESPEC%C3%8DFICA/preguntas
+http://localhost:9002/convocatorias/18/temas/57/parte/ESPEC%C3%8DFICA/preguntas
+
+Para crear preguntas:
+Llamada POST http://localhost:9002/preguntas con un cuerpo como el siguiente:
+{
+        "convocatoria": {
+            "idConvocatoria":20
+        },
+        "idPregunta": null,
+        "enunciado": "Pregunta de test:",
+        "respuesta1": "respuesta 1",
+        "respuesta2": "respuesta 1",
+        "respuesta3": "respuesta 1",
+        "respuesta4": "respuesta 1",
+        "comentarios": "Comentarios DE PRUEBA",
+        "solucion": 4,
+        "anulada": false,
+        "idPreguntaRef": null,
+        "numero": 1,
+        "parte": null,
+        "rutaImagen": null,
+        "temas":null
+    }
+    
+Si se quisiera actualizar una pregunta vía API, se podría hacer simplemente en el cuerpo anterior poniendo el idPregunta que se quiere actualizar.
+- Esto se considera una anomalía pero se deja de momento para permitir la modificación de preguntas sin recurrir a la BD (siempre que no sea lo gestionado por el API).
